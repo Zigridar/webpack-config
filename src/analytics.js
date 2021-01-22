@@ -1,3 +1,5 @@
+import * as $ from 'jquery'
+
 const createAnalytics = () => {
     let counter = 0
 
@@ -5,12 +7,12 @@ const createAnalytics = () => {
 
     const listener = () => counter++
 
-    document.addEventListener('click', listener)
+   $(document).on('click', listener)
 
     return {
         destroy() {
             isDestroyed = true
-            document.removeEventListener('click', listener)
+            $(document).off('click', listener)
         },
 
         getClicks() {

@@ -13,6 +13,11 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.json', '.png']
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
