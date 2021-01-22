@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 /** Webpack config **/
 module.exports = {
@@ -35,13 +36,23 @@ module.exports = {
                     to: path.resolve(__dirname, 'dist')
                 }
             ]
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css'
         })
     ],
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: ''
+                        }
+                    },
+                    'css-loader']
             },
             {
                 test: /\.(png|jpeg|gif|svg)$/,
