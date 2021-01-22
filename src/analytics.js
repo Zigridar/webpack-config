@@ -22,4 +22,4 @@ const createAnalytics = () => {
     }
 }
 
-const analytic = createAnalytics()
+window.analytic = createAnalytics()
