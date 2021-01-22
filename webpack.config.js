@@ -10,6 +10,9 @@ module.exports = {
         main: './index.js',
         analytics: './analytics.js'
     },
+    resolve: {
+        extensions: ['.js', '.json', '.png']
+    },
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
