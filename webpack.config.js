@@ -12,7 +12,7 @@ module.exports = {
     mode: 'development',
     entry: {
         main: ['@babel/polyfill', './index.js'],
-        analytics: './analytics.js'
+        analytics: './analytics.ts'
     },
     resolve: {
         extensions: ['.js', '.json', '.png']
@@ -76,6 +76,19 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-typescript'
+                        ]
                     }
                 }
             }
