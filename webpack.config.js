@@ -11,7 +11,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry: {
-        main: ['@babel/polyfill', './index.js'],
+        main: ['@babel/polyfill', './index.jsx'],
         analytics: './analytics.ts'
     },
     resolve: {
@@ -91,7 +91,20 @@ module.exports = {
                         ]
                     }
                 }
-            }
+            },
+            {
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-react'
+                        ]
+                    }
+                }
+            },
         ]
     }
 }
