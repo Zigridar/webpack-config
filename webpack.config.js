@@ -59,7 +59,8 @@ module.exports = {
                             publicPath: ''
                         }
                     },
-                    'css-loader']
+                    'css-loader'
+                ]
             },
             {
                 test: /\.(png|jpeg|gif|svg)$/,
