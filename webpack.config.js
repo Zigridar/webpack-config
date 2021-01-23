@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
 /** Webpack config **/
 module.exports = {
@@ -26,7 +28,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html'
+            template: './index.html',
+            minify: {
+                collapseWhitespace: true
+            }
         }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
@@ -39,7 +44,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
-        })
+        }),
+        new OptimizeCssAssetsWebpackPlugin(),
+        new TerserWebpackPlugin()
     ],
     module: {
         rules: [
